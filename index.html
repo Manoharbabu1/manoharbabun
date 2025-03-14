@@ -27,18 +27,16 @@
             margin-bottom: 20px;
         }
         .skills {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
             list-style-type: none;
             padding: 0;
         }
         .skills li {
-            width: 45%;
-            margin: 5px 2.5%;
             background: #e4e4e4;
             padding: 10px;
             border-left: 5px solid #0044cc;
-            box-sizing: border-box;
         }
         .experience, .education {
             list-style-type: none;
@@ -60,9 +58,8 @@
             border-left: 5px solid #0044cc;
         }
         @media (max-width: 600px) {
-            .skills li {
-                width: 100%;
-                margin: 5px 0;
+            .skills {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -150,6 +147,4 @@
 
         <section class="section">
             <h2>Recommendation</h2>
-            <p class="recommendation">"Manohar Babu is an innovative IT professional with a strong focus on infrastructure optimization, security, and process automation. His proactive approach to problem-solving and service excellence makes him a valuable asset." – [Recommender Name], [
-::contentReference[oaicite:0]{index=0}
- 
+            <p class="recommendation">"Manohar Babu is an innovative IT professional with
