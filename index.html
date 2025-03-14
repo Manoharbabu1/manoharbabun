@@ -46,13 +46,14 @@
         .widget {
             text-align: center;
             margin-top: 10px;
-            font-size: 16px;
-            color: #444;
-            background: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
+            font-size: 18px;
+            color: white;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            padding: 15px;
+            border-radius: 10px;
             display: inline-block;
-        }
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
         }
     </style>
 </head>
@@ -143,7 +144,7 @@
         </div>
       <div class="counter">
             <div class="widget">
-                <p>Page Visits: <span id="visit-count">0</span></p>
+                <p>🌟 Page Visits: <span id="visit-count">0</span> 🌟</p>
             </div>
         </div>
     </div>
@@ -157,6 +158,7 @@
             localStorage.setItem('visitCount', 1);
             document.getElementById('visit-count').innerText = 1;
         }
+    </script>
     </script>
     </div>
 </body>
