@@ -45,7 +45,7 @@
             margin-bottom: 20px;
             text-align: justify;
         }
-       .counter {
+        .counter {
             text-align: center;
             margin-top: 20px;
             font-weight: bold;
@@ -86,9 +86,14 @@
         .dark-mode .widget {
             background: linear-gradient(135deg, #6a11cb, #2575fc);
         }
-         @media screen and (max-width: 600px) {
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
             .container {
+                max-width: 100%;
                 padding: 15px;
+                margin: 10px auto;
             }
             .contact-links {
                 flex-direction: column;
@@ -96,6 +101,14 @@
             }
             .section {
                 text-align: justify;
+                padding: 5px;
+            }
+            h1, h2 {
+                text-align: center;
+            }
+            .widget {
+                font-size: 16px;
+                padding: 10px;
             }
         }
     </style>
