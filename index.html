@@ -38,6 +38,11 @@
         .section {
             margin-bottom: 20px;
         }
+        .counter {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -125,6 +130,21 @@
                 <li><strong>Diploma Mechanical Engineering</strong> - GMRP, Madanapalle (2010)</li>
             </ul>
         </div>
+        <div class="counter">
+            <p>Page Visits: <span id="visit-count">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        if (localStorage.getItem('visitCount')) {
+            let count = parseInt(localStorage.getItem('visitCount')) + 1;
+            localStorage.setItem('visitCount', count);
+            document.getElementById('visit-count').innerText = count;
+        } else {
+            localStorage.setItem('visitCount', 1);
+            document.getElementById('visit-count').innerText = 1;
+        }
+    </script>
     </div>
 </body>
 </html>
