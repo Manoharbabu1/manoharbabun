@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manohar Babu N - IT Manager Portfolio</title>
+    <title>Manohar Babu N | IT Manager Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #1a3c5a;
-            --secondary-color: #2e6393;
-            --accent-color: #4c9fe0;
-            --light-color: #e9f0f7;
-            --dark-color: #0a1a2a;
-            --success-color: #2ecc71;
-            --text-color: #333;
-            --text-light: #666;
-            --border-radius: 8px;
-            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary-color: #0f4c81;
+            --secondary-color: #3a7ca5;
+            --accent-color: #16c79a;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+            --text-dark: #2d3436;
+            --text-light: #f1f2f6;
+            --text-muted: #7f8c8d;
+            --card-bg: #ffffff;
+            --border-radius: 10px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
@@ -28,9 +29,10 @@
         }
 
         body {
-            background-color: #f5f7fa;
-            color: var(--text-color);
-            line-height: 1.6;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
         .container {
@@ -39,525 +41,932 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 60px 0 30px;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
             position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             overflow: hidden;
         }
 
-        header::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffffff" fill-opacity="0.08" d="M0,192L48,176C96,160,192,128,288,122.7C384,117,480,139,576,149.3C672,160,768,160,864,154.7C960,149,1056,139,1152,133.3C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');
-            background-size: cover;
-            background-position: center bottom;
-            opacity: 0.4;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,160L48,149.3C96,139,192,117,288,128C384,139,480,181,576,197.3C672,213,768,203,864,181.3C960,160,1056,128,1152,133.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            opacity: 0.3;
         }
 
-        .profile {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            color: var(--text-light);
+            max-width: 800px;
         }
 
-        .profile-content {
-            flex: 1;
+        .hero-name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.2;
         }
 
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: var(--light-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 40px;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            overflow: hidden;
-        }
-
-        .profile-pic i {
-            font-size: 80px;
-            color: var(--primary-color);
-        }
-
-        .name {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: rgba(255, 255, 255, 0.9);
+        .hero-title {
+            font-size: 1.5rem;
             font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
 
-        .contact-info {
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .contact-badges {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
-        .contact-item {
+        .contact-badge {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 8px 16px;
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 5px 12px;
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            transition: var(--transition);
+        }
+
+        .contact-badge:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .contact-badge i {
+            color: var(--accent-color);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-light);
+            opacity: 0.7;
             font-size: 0.9rem;
         }
 
-        .contact-item i {
-            font-size: 1rem;
+        .scroll-indicator i {
+            animation: bounce 2s infinite;
         }
 
-        /* Main Content Styles */
-        main {
-            padding: 50px 0;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
+        /* About Section */
         .section {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 25px;
-            margin-bottom: 30px;
+            padding: 100px 0;
         }
 
         .section-title {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--light-color);
+            font-size: 2rem;
+            margin-bottom: 50px;
+            text-align: center;
             position: relative;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-title i {
-            color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -2px;
-            left: 0;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60px;
-            height: 2px;
+            height: 4px;
             background-color: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 25px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--card-bg);
+            top: 25px;
+            transform: rotate(45deg);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            width: 120px;
+            padding: 8px 12px;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border-radius: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            top: 20px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            right: -150px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            left: -150px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            top: 25px;
+            z-index: 1;
+        }
+
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            top: 5px;
+            left: 5px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -12px;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .company {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .achievements-list {
+            margin-top: 20px;
+        }
+
+        .achievement-item {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .achievement-item::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+
+        /* Competencies Section */
+        .competencies {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .competencies::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230f4c81" fill-opacity="0.1" d="M0,32L48,58.7C96,85,192,139,288,176C384,213,480,235,576,224C672,213,768,171,864,154.7C960,139,1056,149,1152,165.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .comp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .comp-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            transition: var(--transition);
+            height: 100%;
+            border-bottom: 3px solid transparent;
+        }
+
+        .comp-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .comp-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .comp-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .comp-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
         }
 
         /* Skills Section */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 30px;
         }
 
         .skill-category {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 20px;
+            color: var(--primary-color);
         }
 
-        .skill-category h4 {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+        .skill-header i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
         }
 
-        .skills-list {
+        .skill-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
 
-        .skill-item {
-            background: var(--light-color);
-            padding: 5px 12px;
+        .skill-tag {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.9rem;
-            color: var(--primary-color);
-            font-weight: 500;
             transition: var(--transition);
         }
 
-        .skill-item:hover {
-            background: var(--accent-color);
+        .skill-tag:hover {
+            background-color: var(--accent-color);
             color: white;
             transform: translateY(-3px);
         }
 
-        /* Experience Section */
-        .experience-item {
-            margin-bottom: 30px;
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 60px 0 30px;
             position: relative;
-            padding-left: 20px;
-            border-left: 2px solid var(--light-color);
+            overflow: hidden;
         }
 
-        .experience-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .experience-item::before {
+        footer::before {
             content: '';
             position: absolute;
-            left: -8px;
             top: 0;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--accent-color);
-            border: 2px solid white;
-        }
-
-        .job-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .company {
-            font-size: 1rem;
-            color: var(--secondary-color);
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .period {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .achievements {
-            margin-top: 10px;
-        }
-
-        .achievement {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 25px;
-            font-size: 0.95rem;
-        }
-
-        .achievement::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
             left: 0;
-            top: 2px;
-            color: var(--accent-color);
-            font-size: 0.9rem;
+            right: 0;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230f4c81" fill-opacity="0.1" d="M0,96L48,122.7C96,149,192,203,288,202.7C384,203,480,149,576,117.3C672,85,768,75,864,85.3C960,96,1056,128,1152,138.7C1248,149,1344,139,1392,133.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>');
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            opacity: 0.1;
         }
 
-        /* Core Competencies Section */
-        .competencies-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .competency-item {
-            background: var(--light-color);
-            border-radius: var(--border-radius);
-            padding: 15px;
-            transition: var(--transition);
-        }
-
-        .competency-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow);
-        }
-
-        .competency-title {
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+        .footer-content {
+            position: relative;
+            z-index: 2;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
-        }
-
-        .competency-title i {
-            color: var(--accent-color);
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 30px 0;
             text-align: center;
+        }
+
+        .footer-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        .social-links a {
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-            width: 40px;
-            height: 40px;
+        .social-link {
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
+            color: var(--text-light);
+            text-decoration: none;
         }
 
-        .social-links a:hover {
+        .social-link:hover {
             background: var(--accent-color);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+        }
+
+        .footer-contact {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            opacity: 0.8;
         }
 
         .copyright {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            opacity: 0.7;
+            margin-top: 30px;
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .profile {
-                flex-direction: column-reverse;
-                text-align: center;
+        @media screen and (max-width: 992px) {
+            .timeline::after {
+                left: 31px;
             }
-
-            .profile-pic {
-                margin: 0 auto 20px;
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
             }
-
-            .contact-info {
-                justify-content: center;
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
             }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 20px;
+            }
+            
+            .timeline-date {
+                position: relative;
+                width: 100%;
+                top: -10px;
+                left: 0 !important;
+                right: 0 !important;
+                margin-bottom: 15px;
+                border-radius: var(--border-radius);
+            }
+            
+            .timeline-content::after {
+                display: none;
+            }
+        }
 
-            .skills-container,
-            .competencies-container {
+        @media screen and (max-width: 768px) {
+            .hero-name {
+                font-size: 2.5rem;
+            }
+            
+            .hero-title {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .comp-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-container {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .section {
-            animation: fadeIn 0.6s ease-out forwards;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.4s; }
-        .section:nth-child(4) { animation-delay: 0.6s; }
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
+        .delay-4 { transition-delay: 0.8s; }
     </style>
 </head>
 <body>
-    <header>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">MB</div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#competencies" class="nav-link">Competencies</a>
+                <a href="#skills" class="nav-link">Skills</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
         <div class="container">
-            <div class="profile">
-                <div class="profile-content">
-                    <h1 class="name">Manohar Babu N</h1>
-                    <h2 class="title">IT Manager & Infrastructure Specialist</h2>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>manoharbabun1984@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+91 9742397177</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn/149394</span>
-                        </div>
+            <div class="hero-content">
+                <h1 class="hero-name fade-in">Manohar Babu N</h1>
+                <h2 class="hero-title fade-in delay-1">IT Manager & Infrastructure Specialist</h2>
+                <p class="hero-description fade-in delay-2">
+                    Experienced IT professional with a strong track record of managing global infrastructure systems, 
+                    implementing cost-saving solutions, and ensuring optimal security and performance.
+                </p>
+                <div class="contact-badges fade-in delay-3">
+                    <div class="contact-badge">
+                        <i class="fas fa-envelope"></i>
+                        <span>manoharbabun1984@gmail.com</span>
                     </div>
-                </div>
-                <div class="profile-pic">
-                    <i class="fas fa-user-tie"></i>
+                    <div class="contact-badge">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9742397177</span>
+                    </div>
+                    <div class="contact-badge">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn/149394</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-    <main class="container">
-        <section class="section">
-            <h3 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h3>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
             
-            <div class="experience-item">
-                <h4 class="job-title">IT Manager</h4>
-                <div class="company">Novoka Logistics Pvt. LTD</div>
-                <div class="period"><i class="far fa-calendar-alt"></i> 2021 - 31 March 2025</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="job-title">IT Manager</h3>
+                        <h4 class="company">Novoka Logistics Pvt. LTD</h4>
+                        <div class="timeline-date">2021 - Mar 2025</div>
+                        <div class="timeline-dot"></div>
+                        <div class="achievements-list">
+                            <div class="achievement-item">Efficiently managed IT infrastructure systems globally, enforced system security protocols.</div>
+                            <div class="achievement-item">Managed global IT fleet services and infrastructure systems, improving system uptime and reducing downtime by 35% through predictive maintenance and proactive monitoring.</div>
+                            <div class="achievement-item">Implemented advanced technology solutions, streamlining operations and resulting in cost reduction of 18% while improving service delivery.</div>
+                            <div class="achievement-item">Oversaw migration to cloud-based VM platforms, increased system stability by 30% with Virtual and Citrix improvements.</div>
+                            <div class="achievement-item">Coordinated successful migration from one compliance checks to others, with approved waivers.</div>
+                            <div class="achievement-item">Developed automation scripts in PowerShell for user lifecycle management, improved IAM procedures resulting in 45% faster user provisioning and access management.</div>
+                            <div class="achievement-item">Managed cybersecurity governance and system security for entire IT infrastructure, reducing reported issues by 27% and ensuring compliance with security frameworks.</div>
+                            <div class="achievement-item">Implemented proactive monitoring tools across all IT environments, reducing incident resolution by 50%.</div>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="achievements">
-                    <div class="achievement">Efficiently managed IT infrastructure systems globally, enforced system security protocols.</div>
-                    <div class="achievement">Managed global IT fleet services and infrastructure systems, improving system uptime and reducing downtime by 35% through predictive maintenance and proactive monitoring.</div>
-                    <div class="achievement">Implemented advanced technology solutions, streamlining operations and resulting in cost reduction of 18% while improving service delivery.</div>
-                    <div class="achievement">Oversaw migration to cloud-based VM platforms, increased system stability by 30% with Virtual and Citrix improvements.</div>
-                    <div class="achievement">Coordinated successful migration from one compliance checks to others, with approved waivers.</div>
-                    <div class="achievement">Developed automation scripts in PowerShell for user lifecycle management, improved IAM procedures resulting in 45% faster user provisioning and access management.</div>
-                    <div class="achievement">Managed cybersecurity governance and system security for entire IT infrastructure, reducing reported issues by 27% and ensuring compliance with security frameworks.</div>
-                    <div class="achievement">Implemented proactive monitoring tools across all IT environments, reducing incident resolution by 50%.</div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="job-title">IT Team Lead</h3>
+                        <h4 class="company">Indus Software India Private Limited</h4>
+                        <div class="timeline-date">2017 - 2021</div>
+                        <div class="timeline-dot"></div>
+                        <div class="achievements-list">
+                            <div class="achievement-item">Provided Level 2 support and IT infrastructure management, reporting system statistics and issues.</div>
+                            <div class="achievement-item">Delivered Level 2 support and managed IT infrastructure including Office 365 (Core ILT, Group Data, VMware and Active Directory).</div>
+                            <div class="achievement-item">Maintained and managed Microsoft Defender and Symantec, strengthening system security.</div>
+                            <div class="achievement-item">Provided Azure Intune via Livemeeter, provided L2 support for Azure AD, VMware, Citrix farm, and Office 365.</div>
+                            <div class="achievement-item">Knowledge of SCCM, user security management, system auditing, and process documentation.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Competencies Section -->
+    <section id="competencies" class="section competencies">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--text-light);">Core Competencies</h2>
             
-            <div class="experience-item">
-                <h4 class="job-title">IT Team Lead</h4>
-                <div class="company">Indus Software India Private Limited</div>
-                <div class="period"><i class="far fa-calendar-alt"></i> 2017 - 2021</div>
+            <div class="comp-grid">
+                <div class="comp-card fade-in">
+                    <div class="comp-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="comp-title">Infrastructure</h3>
+                    <p class="comp-text">Cost optimization, strategic planning, performance tuning with expertise in maintaining IT infrastructure and ensuring operational efficiency.</p>
+                </div>
                 
-                <div class="achievements">
-                    <div class="achievement">Provided Level 2 support and IT infrastructure management, reporting system statistics and issues.</div>
-                    <div class="achievement">Delivered Level 2 support and managed IT infrastructure including Office 365 (Core ILT, Group Data, VMware and Active Directory).</div>
-                    <div class="achievement">Maintained and managed Microsoft Defender and Symantec, strengthening system security.</div>
-                    <div class="achievement">Provided Azure Intune via Livemeeter, provided L2 support for Azure AD, VMware, Citrix farm, and Office 365.</div>
-                    <div class="achievement">Knowledge of SCCM, user security management, system auditing, and process documentation.</div>
+                <div class="comp-card fade-in delay-1">
+                    <div class="comp-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="comp-title">Security</h3>
+                    <p class="comp-text">Strong focus on security measures, compliance monitoring, risk mitigation resulting in cost savings and enhanced system protection.</p>
+                </div>
+                
+                <div class="comp-card fade-in delay-2">
+                    <div class="comp-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="comp-title">Operations</h3>
+                    <p class="comp-text">Skilled in optimizing service delivery, turning system failures into opportunities for productivity and cost optimization for high ROI.</p>
+                </div>
+                
+                <div class="comp-card fade-in delay-3">
+                    <div class="comp-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3 class="comp-title">Management</h3>
+                    <p class="comp-text">Strategic technology planning and governance with expertise in vendor management, capacity planning, and continual service improvement.</p>
+                </div>
+                
+                <div class="comp-card fade-in delay-4">
+                    <div class="comp-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="comp-title">Team Leadership</h3>
+                    <p class="comp-text">Content and technical documentation, training course development, and effective team management.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section">
-            <h3 class="section-title"><i class="fas fa-cogs"></i> Core Competencies</h3>
-            
-            <div class="competencies-container">
-                <div class="competency-item">
-                    <h4 class="competency-title"><i class="fas fa-server"></i> Infrastructure</h4>
-                    <p>Cost optimization, strategic planning, performance tuning with expertise in maintaining IT infrastructure and ensuring operational efficiency.</p>
-                </div>
-                
-                <div class="competency-item">
-                    <h4 class="competency-title"><i class="fas fa-shield-alt"></i> Security</h4>
-                    <p>Strong focus on security measures, compliance monitoring, risk mitigation resulting in cost savings and enhanced system protection.</p>
-                </div>
-                
-                <div class="competency-item">
-                    <h4 class="competency-title"><i class="fas fa-chart-line"></i> Operations</h4>
-                    <p>Skilled in optimizing service delivery, turning system failures into opportunities for productivity and cost optimization for high ROI.</p>
-                </div>
-                
-                <div class="competency-item">
-                    <h4 class="competency-title"><i class="fas fa-sitemap"></i> Management</h4>
-                    <p>Strategic technology planning and governance with expertise in vendor management, capacity planning, and continual service improvement.</p>
-                </div>
-                
-                <div class="competency-item">
-                    <h4 class="competency-title"><i class="fas fa-users-cog"></i> Team Leadership</h4>
-                    <p>Content and technical documentation, training course development, and effective team management.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h3 class="section-title"><i class="fas fa-tools"></i> Technical Skills</h3>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
             
             <div class="skills-container">
-                <div class="skill-category">
-                    <h4>Cloud Technologies</h4>
-                    <div class="skills-list">
-                        <div class="skill-item">Azure</div>
-                        <div class="skill-item">Office 365</div>
-                        <div class="skill-item">VMware</div>
-                        <div class="skill-item">Citrix</div>
+                <div class="skill-category fade-in delay-3">
+                    <div class="skill-header">
+                        <i class="fas fa-network-wired"></i>
+                        <h3 class="skill-title">Infrastructure Management</h3>
                     </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Security & Compliance</h4>
-                    <div class="skills-list">
-                        <div class="skill-item">Microsoft Defender</div>
-                        <div class="skill-item">Symantec</div>
-                        <div class="skill-item">Azure AD</div>
-                        <div class="skill-item">Security Frameworks</div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Automation & Development</h4>
-                    <div class="skills-list">
-                        <div class="skill-item">PowerShell</div>
-                        <div class="skill-item">IAM</div>
-                        <div class="skill-item">SCCM</div>
-                        <div class="skill-item">Proactive Monitoring</div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Infrastructure Management</h4>
-                    <div class="skills-list">
-                        <div class="skill-item">Active Directory</div>
-                        <div class="skill-item">System Documentation</div>
-                        <div class="skill-item">Lifecycle Management</div>
-                        <div class="skill-item">Cost Optimization</div>
+                    <div class="skill-list">
+                        <div class="skill-tag">Active Directory</div>
+                        <div class="skill-tag">System Documentation</div>
+                        <div class="skill-tag">Lifecycle Management</div>
+                        <div class="skill-tag">Cost Optimization</div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="container">
+        <div class="container footer-content">
+            <h2 class="footer-name">Manohar Babu N</h2>
+            <p class="footer-title">IT Manager & Infrastructure Specialist</p>
+            
             <div class="social-links">
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
-            <div class="copyright">
-                &copy; <span id="year">2025</span> Manohar Babu N. All Rights Reserved.
+            
+            <div class="footer-contact">
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>manoharbabun1984@gmail.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 9742397177</span>
+                </div>
             </div>
+            
+            <p class="copyright">&copy; <span id="year">2025</span> Manohar Babu N. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Set current year
+        // Update current year
         document.getElementById('year').textContent = new Date().getFullYear();
         
-        // Add scroll reveal animation effect
+        // Animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.section');
+            // Initial animation for hero section
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(item => {
+                    item.classList.add('visible');
+                });
+            }, 100);
             
+            // Observer for scroll animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('visible');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.15 });
             
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(section);
+            // Observe timeline items
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
             });
+            
+            // Observe fade-in elements that aren't in the hero
+            document.querySelectorAll('.competencies .fade-in, #skills .fade-in').forEach(item => {
+                observer.observe(item);
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '10px 0';
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.padding = '15px 0';
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
         });
     </script>
 </body>
-</html>
+</html> fade-in">
+                    <div class="skill-header">
+                        <i class="fas fa-cloud"></i>
+                        <h3 class="skill-title">Cloud Technologies</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-tag">Azure</div>
+                        <div class="skill-tag">Office 365</div>
+                        <div class="skill-tag">VMware</div>
+                        <div class="skill-tag">Citrix</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in delay-1">
+                    <div class="skill-header">
+                        <i class="fas fa-lock"></i>
+                        <h3 class="skill-title">Security & Compliance</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-tag">Microsoft Defender</div>
+                        <div class="skill-tag">Symantec</div>
+                        <div class="skill-tag">Azure AD</div>
+                        <div class="skill-tag">Security Frameworks</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in delay-2">
+                    <div class="skill-header">
+                        <i class="fas fa-code"></i>
+                        <h3 class="skill-title">Automation & Development</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-tag">PowerShell</div>
+                        <div class="skill-tag">IAM</div>
+                        <div class="skill-tag">SCCM</div>
+                        <div class="skill-tag">Proactive Monitoring</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category
