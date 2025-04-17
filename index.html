@@ -7,843 +7,557 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --primary-light: #3b82f6;
-            --primary-dark: #1d4ed8;
-            --secondary-color: #0f172a;
-            --text-color: #334155;
-            --light-bg: #f1f5f9;
-            --border-color: #e2e8f0;
-            --section-spacing: 4rem;
-            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --animation-speed: 0.3s;
+            --primary-color: #1a3c5a;
+            --secondary-color: #2e6393;
+            --accent-color: #4c9fe0;
+            --light-color: #e9f0f7;
+            --dark-color: #0a1a2a;
+            --success-color: #2ecc71;
+            --text-color: #333;
+            --text-light: #666;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
+            background-color: #f5f7fa;
             color: var(--text-color);
-            background-color: var(--light-bg);
-            scroll-behavior: smooth;
+            line-height: 1.6;
         }
-        
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: all var(--animation-speed) ease;
-        }
-        
-        a:hover {
-            color: var(--primary-dark);
-        }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 20px;
         }
-        
+
+        /* Header Styles */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all var(--animation-speed) ease;
-        }
-        
-        header.scrolled {
-            box-shadow: var(--card-shadow);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-            position: relative;
-        }
-        
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            height: 3px;
-            width: 50%;
-            background-color: var(--primary-color);
-            border-radius: 2px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            font-weight: 500;
-            color: var(--text-color);
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            height: 2px;
-            width: 0;
-            background-color: var(--primary-color);
-            transition: width var(--animation-speed) ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-        
-        .bar {
-            display: block;
-            width: 25px;
-            height: 2px;
-            margin: 6px auto;
-            background-color: var(--text-color);
-            transition: all var(--animation-speed) ease;
-        }
-        
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #2563eb, #1e40af);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            display: flex;
-            align-items: center;
+            padding: 60px 0 30px;
             position: relative;
             overflow: hidden;
         }
-        
-        .hero::before {
+
+        header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.03)"/></svg>');
-            background-size: 100% 100%;
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffffff" fill-opacity="0.08" d="M0,192L48,176C96,160,192,128,288,122.7C384,117,480,139,576,149.3C672,160,768,160,864,154.7C960,149,1056,139,1152,133.3C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');
+            background-size: cover;
+            background-position: center bottom;
+            opacity: 0.4;
         }
-        
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            padding: 2rem;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.025em;
-            line-height: 1.2;
-        }
-        
-        .hero h1 span {
-            color: #FFDD99;
-            text-decoration: underline;
-            text-decoration-color: rgba(255, 221, 153, 0.3);
-            text-decoration-thickness: 4px;
-            text-underline-offset: 8px;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-info a {
-            color: white;
+
+        .profile {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
-            transition: all var(--animation-speed) ease;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
         }
-        
-        .contact-info a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+
+        .profile-content {
+            flex: 1;
         }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            font-size: 1.5rem;
-        }
-        
-        .social-links a {
-            color: white;
-            background-color: rgba(255, 255, 255, 0.1);
-            width: 3rem;
-            height: 3rem;
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
+            background-color: var(--light-color);
             display: flex;
-            justify-content: center;
             align-items: center;
-            transition: all var(--animation-speed) ease;
+            justify-content: center;
+            margin-left: 40px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
         }
-        
-        .social-links a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+
+        .profile-pic i {
+            font-size: 80px;
+            color: var(--primary-color);
         }
-        
-        .section-wrapper {
-            padding: var(--section-spacing) 0;
-        }
-        
-        section {
-            background-color: white;
-            border-radius: 16px;
-            box-shadow: var(--card-shadow);
-            padding: 3rem;
-            margin-bottom: var(--section-spacing);
-            transition: transform var(--animation-speed) ease;
-        }
-        
-        section:hover {
-            transform: translateY(-5px);
-        }
-        
-        .section-title {
-            font-size: 2.2rem;
-            color: var(--secondary-color);
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
+
+        .name {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
             font-weight: 700;
         }
-        
+
+        .title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            font-size: 0.9rem;
+        }
+
+        .contact-item i {
+            font-size: 1rem;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 50px 0;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent-color);
+        }
+
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -2px;
             left: 0;
-            height: 4px;
             width: 60px;
-            background-color: var(--primary-color);
-            border-radius: 2px;
+            height: 2px;
+            background-color: var(--accent-color);
         }
-        
-        .about-content {
+
+        /* Skills Section */
+        .skills-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
-        
-        .about-text {
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
             font-size: 1.1rem;
         }
-        
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skills {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        
-        .skill-category {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-category h3 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .skill-category h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            height: 2px;
-            width: 30px;
-            background-color: var(--primary-color);
-        }
-        
+
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 10px;
         }
-        
-        .skill-tag {
-            background-color: var(--light-bg);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
+
+        .skill-item {
+            background: var(--light-color);
+            padding: 5px 12px;
+            border-radius: 20px;
             font-size: 0.9rem;
+            color: var(--primary-color);
             font-weight: 500;
-            transition: all var(--animation-speed) ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
         }
-        
-        .skill-tag:hover {
-            background-color: var(--primary-light);
+
+        .skill-item:hover {
+            background: var(--accent-color);
             color: white;
-            transform: translateY(-2px);
-        }
-        
-        .experience-item {
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 12px;
-            background-color: var(--light-bg);
-            position: relative;
-            overflow: hidden;
-            transition: all var(--animation-speed) ease;
-        }
-        
-        .experience-item:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transform: translateY(-3px);
         }
-        
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--light-color);
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
         .experience-item::before {
             content: '';
             position: absolute;
+            left: -8px;
             top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background-color: var(--primary-color);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 2px solid white;
         }
-        
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-        
+
         .job-title {
-            font-size: 1.4rem;
-            color: var(--secondary-color);
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-        
-        .job-company {
+            font-size: 1.2rem;
             font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .period {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .achievements {
+            margin-top: 10px;
+        }
+
+        .achievement {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.95rem;
+        }
+
+        .achievement::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        /* Core Competencies Section */
+        .competencies-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .competency-item {
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            transition: var(--transition);
+        }
+
+        .competency-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .competency-title {
             color: var(--primary-color);
             font-size: 1.1rem;
-        }
-        
-        .job-duration {
-            color: #64748b;
-            font-weight: 500;
-            background-color: rgba(37, 99, 235, 0.1);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-        }
-        
-        .job-description {
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-        
-        .job-achievements {
-            list-style-position: outside;
-            padding-left: 1.2rem;
-        }
-        
-        .job-achievements li {
-            margin-bottom: 0.75rem;
-            position: relative;
-        }
-        
-        .job-achievements li::marker {
-            color: var(--primary-color);
-        }
-        
-        .education-item, .training-item {
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 12px;
-            background-color: var(--light-bg);
-            transition: all var(--animation-speed) ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .education-item:hover, .training-item:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transform: translateY(-3px);
-        }
-        
-        .education-item::before, .training-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background-color: var(--primary-color);
-        }
-        
-        .education-title, .training-title {
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .education-institution {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .education-year {
-            display: inline-block;
-            color: #64748b;
-            font-weight: 500;
-            background-color: rgba(37, 99, 235, 0.1);
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .contact-content {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .contact-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .contact-method {
-            background-color: var(--light-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            transition: all var(--animation-speed) ease;
-        }
-        
-        .contact-method:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .contact-method i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            background-color: rgba(37, 99, 235, 0.1);
-            width: 4rem;
-            height: 4rem;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+            gap: 8px;
         }
-        
-        .contact-method h3 {
-            font-size: 1.2rem;
-            color: var(--secondary-color);
+
+        .competency-title i {
+            color: var(--accent-color);
         }
-        
-        .contact-method a {
-            font-weight: 500;
-        }
-        
+
+        /* Footer Styles */
         footer {
-            background-color: var(--secondary-color);
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-        }
-        
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .footer-links {
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-        
-        .footer-links a {
-            color: white;
-            opacity: 0.7;
-            transition: all var(--animation-speed) ease;
-        }
-        
-        .footer-links a:hover {
-            opacity: 1;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
             background-color: var(--primary-color);
             color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .social-links {
             display: flex;
             justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: all var(--animation-speed) ease;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 100;
+            justify-content: center;
+            transition: var(--transition);
         }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        
-        .back-to-top:hover {
-            background-color: var(--primary-dark);
+
+        .social-links a:hover {
+            background: var(--accent-color);
             transform: translateY(-3px);
         }
-        
-        /* Animation classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
         }
-        
-        .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        @media (max-width: 992px) {
-            .about-content {
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .profile-pic {
+                margin: 0 auto 20px;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .skills-container,
+            .competencies-container {
                 grid-template-columns: 1fr;
             }
-            
-            section {
-                padding: 2rem;
-            }
         }
-        
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-                z-index: 101;
-            }
-            
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-            
-            .nav-links {
-                position: fixed;
-                right: -100%;
-                top: 0;
-                flex-direction: column;
-                background-color: white;
-                width: 80%;
-                height: 100vh;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                z-index: 100;
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links li {
-                margin: 1.5rem 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .job-header {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .job-duration {
-                align-self: flex-start;
-            }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .experience-item, .education-item, .training-item {
-                padding: 1.5rem;
-            }
+
+        .section {
+            animation: fadeIn 0.6s ease-out forwards;
         }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
-    <header id="header">
+    <header>
         <div class="container">
-            <nav>
-                <div class="logo">MBN</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#training">Professional Development</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+            <div class="profile">
+                <div class="profile-content">
+                    <h1 class="name">Manohar Babu N</h1>
+                    <h2 class="title">IT Manager & Infrastructure Specialist</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>manoharbabun1984@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 9742397177</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn/149394</span>
+                        </div>
+                    </div>
                 </div>
-            </nav>
+                <div class="profile-pic">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="hero" id="home">
+    <main class="container">
+        <section class="section">
+            <h3 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h3>
+            
+            <div class="experience-item">
+                <h4 class="job-title">IT Manager</h4>
+                <div class="company">Novoka Logistics Pvt. LTD</div>
+                <div class="period"><i class="far fa-calendar-alt"></i> 2021 - 31 March 2025</div>
+                
+                <div class="achievements">
+                    <div class="achievement">Efficiently managed IT infrastructure systems globally, enforced system security protocols.</div>
+                    <div class="achievement">Managed global IT fleet services and infrastructure systems, improving system uptime and reducing downtime by 35% through predictive maintenance and proactive monitoring.</div>
+                    <div class="achievement">Implemented advanced technology solutions, streamlining operations and resulting in cost reduction of 18% while improving service delivery.</div>
+                    <div class="achievement">Oversaw migration to cloud-based VM platforms, increased system stability by 30% with Virtual and Citrix improvements.</div>
+                    <div class="achievement">Coordinated successful migration from one compliance checks to others, with approved waivers.</div>
+                    <div class="achievement">Developed automation scripts in PowerShell for user lifecycle management, improved IAM procedures resulting in 45% faster user provisioning and access management.</div>
+                    <div class="achievement">Managed cybersecurity governance and system security for entire IT infrastructure, reducing reported issues by 27% and ensuring compliance with security frameworks.</div>
+                    <div class="achievement">Implemented proactive monitoring tools across all IT environments, reducing incident resolution by 50%.</div>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <h4 class="job-title">IT Team Lead</h4>
+                <div class="company">Indus Software India Private Limited</div>
+                <div class="period"><i class="far fa-calendar-alt"></i> 2017 - 2021</div>
+                
+                <div class="achievements">
+                    <div class="achievement">Provided Level 2 support and IT infrastructure management, reporting system statistics and issues.</div>
+                    <div class="achievement">Delivered Level 2 support and managed IT infrastructure including Office 365 (Core ILT, Group Data, VMware and Active Directory).</div>
+                    <div class="achievement">Maintained and managed Microsoft Defender and Symantec, strengthening system security.</div>
+                    <div class="achievement">Provided Azure Intune via Livemeeter, provided L2 support for Azure AD, VMware, Citrix farm, and Office 365.</div>
+                    <div class="achievement">Knowledge of SCCM, user security management, system auditing, and process documentation.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title"><i class="fas fa-cogs"></i> Core Competencies</h3>
+            
+            <div class="competencies-container">
+                <div class="competency-item">
+                    <h4 class="competency-title"><i class="fas fa-server"></i> Infrastructure</h4>
+                    <p>Cost optimization, strategic planning, performance tuning with expertise in maintaining IT infrastructure and ensuring operational efficiency.</p>
+                </div>
+                
+                <div class="competency-item">
+                    <h4 class="competency-title"><i class="fas fa-shield-alt"></i> Security</h4>
+                    <p>Strong focus on security measures, compliance monitoring, risk mitigation resulting in cost savings and enhanced system protection.</p>
+                </div>
+                
+                <div class="competency-item">
+                    <h4 class="competency-title"><i class="fas fa-chart-line"></i> Operations</h4>
+                    <p>Skilled in optimizing service delivery, turning system failures into opportunities for productivity and cost optimization for high ROI.</p>
+                </div>
+                
+                <div class="competency-item">
+                    <h4 class="competency-title"><i class="fas fa-sitemap"></i> Management</h4>
+                    <p>Strategic technology planning and governance with expertise in vendor management, capacity planning, and continual service improvement.</p>
+                </div>
+                
+                <div class="competency-item">
+                    <h4 class="competency-title"><i class="fas fa-users-cog"></i> Team Leadership</h4>
+                    <p>Content and technical documentation, training course development, and effective team management.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title"><i class="fas fa-tools"></i> Technical Skills</h3>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4>Cloud Technologies</h4>
+                    <div class="skills-list">
+                        <div class="skill-item">Azure</div>
+                        <div class="skill-item">Office 365</div>
+                        <div class="skill-item">VMware</div>
+                        <div class="skill-item">Citrix</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Security & Compliance</h4>
+                    <div class="skills-list">
+                        <div class="skill-item">Microsoft Defender</div>
+                        <div class="skill-item">Symantec</div>
+                        <div class="skill-item">Azure AD</div>
+                        <div class="skill-item">Security Frameworks</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Automation & Development</h4>
+                    <div class="skills-list">
+                        <div class="skill-item">PowerShell</div>
+                        <div class="skill-item">IAM</div>
+                        <div class="skill-item">SCCM</div>
+                        <div class="skill-item">Proactive Monitoring</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Infrastructure Management</h4>
+                    <div class="skills-list">
+                        <div class="skill-item">Active Directory</div>
+                        <div class="skill-item">System Documentation</div>
+                        <div class="skill-item">Lifecycle Management</div>
+                        <div class="skill-item">Cost Optimization</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
         <div class="container">
-            <div class="hero-content">
-                <h1 class="fade-in">Manohar Babu <span>N</span></h1>
-                <p class="fade-in">IT Manager with 9+ years of global experience leading IT infrastructure support</p>
-                <div class="contact-info fade-in">
-                    <a href="tel:+918147021377"><i class="fas fa-phone"></i> +91 8147021377</a>
-                    <a href="mailto:manoharbabu1606@gmail.com"><i class="fas fa-envelope"></i> manoharbabu1606@gmail.com</a>
-                </div>
-                <div class="social-links fade-in">
-                    <a href="https://www.linkedin.com/in/yourlinkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/yourgithub" target="_blank"><i class="fab fa-github"></i></a>
-                </div>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; <span id="year">2025</span> Manohar Babu N. All Rights Reserved.
             </div>
         </div>
-    </section>
+    </footer>
 
-    <div class="container section-wrapper">
-        <section id="about" class="fade-in">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>IT Manager with 9+ years of global experience leading IT infrastructure support both on-premises, Azure cloud, and Citrix DaaS environments. Aligned technology roadmaps with business goals, resulting in a 10% boost in operational efficiency and $500M in cost savings.</p>
-                    <p>Skilled in driving digital transformation, implementing strategic cloud solutions, and enhancing ITSM workflows—achieving a 15% improvement in global support and increased service reliability. Adept at strengthening stakeholder relationships and optimizing service delivery, raising system availability and user satisfaction by over 10%.</p>
-                </div>
-                <div class="skills">
-                    <div class="skill-category">
-                        <h3>Core Competencies</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">Strategic Technology Planning</span>
-                            <span class="skill-tag">IT Governance</span>
-                            <span class="skill-tag">Regional Team Management</span>
-                            <span class="skill-tag">Resource Management</span>
-                            <span class="skill-tag">Budget Management</span>
-                            <span class="skill-tag">Strategic Planning</span>
-                            <span class="skill-tag">Project Management</span>
-                            <span class="skill-tag">Change Management</span>
-                            <span class="skill-tag">Vendor Management</span>
-                            <span class="skill-tag">Capacity Planning</span>
-                            <span class="skill-tag">IT Service Improvement</span>
-                            <span class="skill-tag">Incident Management</span>
-                            <span class="skill-tag">Problem Management</span>
-                            <span class="skill-tag">Identity Access Management</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Technical Skills</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">Azure Cloud</span>
-                            <span class="skill-tag">Citrix DaaS</span>
-                            <span class="skill-tag">Microsoft 365</span>
-                            <span class="skill-tag">Active Directory</span>
-                            <span class="skill-tag">Entra ID</span>
-                            <span class="skill-tag">PowerShell</span>
-                            <span class="skill-tag">Microsoft Intune</span>
-                            <span class="skill-tag">SD-WAN</span>
-                            <span class="skill-tag">ITSM</span>
-                            <span class="skill-tag">VMware</span>
-                            <span class="skill-tag">Windows Server</span>
-                            <span class="skill-tag">Linux</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="fade-in">
-            <h2 class="section-title">Professional Experience</h2>
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Add scroll reveal animation effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
             
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">IT Manager</h3>
-                        <div class="job-company">Neovia Logistics Pvt, LTD</div>
-                    </div>
-                    <div class="job-duration">2021 – 31 March 2025</div>
-                </div>
-                <p class="job-description">Managed IT field services operations and IT Infrastructure systems globally, enhanced system performance and minimize service disruptions</p>
-                <ul class="job-achievements">
-                    <li>Managed global IT field services and infrastructure systems, improving system uptime and minimizing disruptions by implementing proactive monitoring, standardizing incident response processes, and driving root cause analysis in APAC regions.</li>
-                    <li>Supervised Active Directory, Azure AD (Entra ID), Microsoft Intune, and Microsoft 365 platforms; increased system reliability by 10% with Intune and Citrix improvements that modernized infrastructure, automated device compliance checks, and improved remote access.</li>
-                    <li>Developed automation scripts in PowerShell for user lifecycle management; migrated MFA from DUO to Azure MFA, improved email and authentication security protocols.</li>
-                    <li>Led migration from Fortinet to CATO SD-WAN, reducing network-related issues by 47%.</li>
-                    <li>Enhanced ITSM by migrating to Service desk plus from Service now, increasing first-call resolution by 50%.</li>
-                </ul>
-            </div>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
             
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">IT Support Analyst</h3>
-                        <div class="job-company">OLF (India) Software India Private Limited</div>
-                    </div>
-                    <div class="job-duration">2017 – 2021</div>
-                </div>
-                <p class="job-description">Provided Level 2 support and IT infrastructure management, improving system reliability and security.</p>
-                <ul class="job-achievements">
-                    <li>Delivered Level 2 support and managed IT infrastructure including Office 365, Entra ID, Citrix Farm, VMware, and Active Directory.</li>
-                    <li>Improved endpoint protection with Microsoft Defender and Symantec, strengthening system security.</li>
-                    <li>Managed asset inventory via Lansweeper; provided L2 support for Azure IAM, VMware, Netskope, CrowdStrike, and Cisco AnyConnect.</li>
-                    <li>Streamlined issue resolution using Jira and ServiceNow, improved knowledge base documentation.</li>
-                    <li>Supported Windows 10,11 and Linux OS upgrade and migrations and supported IT service desk operations globally.</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Desktop Support Engineer</h3>
-                        <div class="job-company">IMSI India Private Limited</div>
-                    </div>
-                    <div class="job-duration">2016 – 2017</div>
-                </div>
-                <ul class="job-achievements">
-                    <li>Served as IT field services support for 5 projects, supporting over 1,000 users per shift.</li>
-                    <li>Troubleshoot and resolve incidents via BMC Remedy, reducing downtime.</li>
-                    <li>Provided support for Windows, Outlook, Exchange, Office 365, and Desktops and laptops.</li>
-                    <li>Improved SLA adherence through proactive issue tracking and 24/7 ServiceDesk support.</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Junior Quality Engineer</h3>
-                        <div class="job-company">NASH India Private Limited</div>
-                    </div>
-                    <div class="job-duration">2015 – 2016</div>
-                </div>
-                <ul class="job-achievements">
-                    <li>Level 1 IT Support for Project Bloom energy and APC as well as Quality check.</li>
-                    <li>Performed ISO-compliant inspections and managed quality documentation systems along.</li>
-                    <li>Implemented Poka-Yoke and SOPs to reduce errors by 10%; tracked instrument calibration.</li>
-                    <li>Created real-time dashboards for First Pass Yield using Excel and SAP.</li>
-                    <li>Conducted final assembly audits and maintained BOM and inventory systems.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="education" class="fade-in">
-            <h2 class="section-title">Education</h2>
-            
-            <div class="education-item">
-                <h3 class="education-title">Bachelor of Technology, Mechanical Engineering</h3>
-                <div class="education-institution">RGMCET, Nandyal</div>
-                <div class="education-year">2015</div>
-            </div>
-            
-            <div class="education-item">
-                <h3 class="education-title">Diploma, Mechanical Engineering</h3>
-                <div class="education-institution">GMRP, Madanapalle</div>
-                <div class="education-year">2010</div>
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
