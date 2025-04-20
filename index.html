@@ -4,360 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manohar Babu N - IT Manager Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <style>
         :root {
-            --primary-color: #0e76a8;
-            --secondary-color: #034e71;
-            --text-color: #333;
-            --light-bg: #f5f5f5;
-            --border-color: #ddd;
-            --section-spacing: 2rem;
+            --primary: #0e76a8;
+            --secondary: #034e71;
+            --text: #333;
+            --bg-light: #f5f5f5;
+            --radius: 8px;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-bg);
-        }
-        
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: color 0.3s ease;
-        }
-        
-        a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        
-        .nav-links a {
-            font-weight: 500;
-        }
-        
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-        
-        .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: var(--text-color);
-            transition: all 0.3s ease;
-        }
-        
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Open Sans', sans-serif; color:var(--text); background:var(--bg-light); line-height:1.6; }
+        h1,h2,h3 { font-family:'Montserrat', sans-serif; color:var(--primary); }
+        a { color:var(--primary); text-decoration:none; transition:0.3s; }
+        a:hover { color:var(--secondary); }
+        .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
+        header { background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:fixed; width:100%; top:0; z-index:100; }
+        nav { display:flex; align-items:center; justify-content:space-between; padding:1rem 0; }
+        .logo { font-size:1.75rem; font-weight:700; }
+        .nav-links { list-style:none; display:flex; gap:1.5rem; }
+        .nav-links a { font-weight:600; }
+        .hamburger { display:none; cursor:pointer; }
+        .bar { width:25px; height:3px; background:#333; margin:5px auto; transition:0.3s; }
+
+        /* Hero */
         .hero {
-            padding: 8rem 0 5rem;
-            background: linear-gradient(to right, #0e76a8, #034e71);
-            color: white;
-            text-align: center;
+            background: url('hero-bg.jpg') center/cover no-repeat;
+            min-height:100vh;
+            position:relative;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            color:#fff;
         }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .hero::before {
+            content:'';
+            position:absolute;
+            top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.5);
+            z-index:1;
         }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-info a {
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            font-size: 1.5rem;
-        }
-        
-        section {
-            padding: var(--section-spacing) 0;
-            background-color: white;
-            margin-bottom: var(--section-spacing);
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .section-title {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-        }
-        
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .skills {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .skill-category {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-category h3 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .skill-tag {
-            background-color: var(--light-bg);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .experience-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .experience-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-        
-        .job-title {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-        }
-        
-        .job-company {
-            font-weight: bold;
-        }
-        
-        .job-duration {
-            color: Black;
-            font-weight: bold;
-            Align:Justify
-        }
-        
-        .job-description {
-            margin-bottom: 1rem;
-        }
-        
-        .job-achievements {
-            list-style-position: inside;
-        }
-        
-        .job-achievements li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .education-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .education-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .education-title {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-        }
-        
-        .education-institution {
-            font-weight: bold;
-        }
-        
-        .education-year {
-            color: #666;
-        }
-        
-        .training-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .training-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .training-title {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-        }
-        
-        footer {
-            background-color: var(--secondary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-        
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .footer-links {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-        
-        .footer-links a {
-            color: white;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease;
-        }
-        
-        .back-to-top:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-                padding: 1rem 0;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 1rem 0;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .job-header {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
+        .hero-content { position:relative; z-index:2; }
+        .hero h1 { font-size:3rem; margin-bottom:0.5rem; }
+        .hero p { font-size:1.2rem; margin-bottom:1.5rem; }
+        .btn { display:inline-block; background:var(--secondary); padding:0.75rem 1.5rem; border-radius:var(--radius); color:#fff; font-weight:600; }
+
+        /* Sections */
+        section { padding:6rem 0 3rem; }
+        .section-title { font-size:2rem; margin-bottom:2rem; position:relative; display:inline-block; }
+        .section-title::after { content:''; width:50px; height:4px; background:var(--primary); position:absolute; left:0; bottom:-0.5rem; border-radius:2px; }
+
+        /* Grid */
+        .grid { display:grid; gap:2rem; }
+        .grid-2 { grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); }
+        .cards { background:#fff; padding:1.5rem; border-radius:var(--radius); box-shadow:0 2px 8px rgba(0,0,0,0.05); transition:transform 0.3s; }
+        .cards:hover { transform:translateY(-5px); }
+        .text-muted { color:#666; font-size:0.9rem; margin-bottom:1rem; }
+
+        /* Skills Tags */
+        .skills-list { display:flex; flex-wrap:wrap; gap:0.5rem; }
+        .skill-tag { background:var(--bg-light); padding:0.5rem 1rem; border-radius:20px; font-size:0.9rem; }
+
+        /* Contact */
+        .contact-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; }
+        .contact-card { background:#fff; padding:1.5rem; border-radius:var(--radius); text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+        .contact-card i { font-size:2rem; margin-bottom:0.5rem; color:var(--secondary); }
+
+        /* Footer */
+        footer { background:var(--secondary); color:#fff; text-align:center; padding:3rem 0; }
+        .footer-links { display:flex; justify-content:center; gap:1.5rem; margin-top:1rem; }
+        .footer-links a { color:#fff; }
+
+        /* Responsive */
+        @media (max-width:768px) {
+            .hamburger { display:block; }
+            .nav-links { position:fixed; top:70px; left:-100%; width:100%; background:#fff; flex-direction:column; gap:1rem; padding:1rem 0; transition:0.3s; }
+            .nav-links.active { left:0; }
         }
     </style>
 </head>
@@ -370,7 +98,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#education">Education</a></li>
-                    <li><a href="#training">Professional Development</a></li>
+                    <li><a href="#training">Training</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="hamburger">
@@ -382,272 +110,178 @@
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Manohar Babu N</h1>
-                <p>IT Manager with 9+ years of global experience leading IT infrastructure support</p>
-                <div class="contact-info">
-                    <a href="tel:+918147021377"><i class="fas fa-phone"></i> +91 8147021377</a>
-                    <a href="mailto:manoharbabu1606@gmail.com"><i class="fas fa-envelope"></i> manoharbabu1606@gmail.com</a>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/manoharbabul/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Manoharbabu1" target="_blank"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
+    <!-- Hero -->
+    <section class="hero" id="home" data-aos="fade-up">
+        <div class="hero-content">
+            <h1>Manohar Babu N</h1>
+            <p>IT Manager with 9+ years of global experience leading IT infrastructure support</p>
+            <a href="#contact" class="btn">Get in Touch</a>
         </div>
     </section>
 
     <div class="container">
-        <section id="about">
+        <!-- About -->
+        <section id="about" data-aos="fade-right">
             <h2 class="section-title">Professional Summary</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p><Justify>IT Manager with 9+ years of global experience leading IT infrastructure support both on-premises, Azure cloud, and Citrix DaaS environments. Aligned technology roadmaps with business goals, resulting in a 10% boost in operational efficiency and $500M in cost savings.</Justify></p>
-                   
-                    
-                    <p><Justify>Skilled in driving digital transformation, implementing strategic cloud solutions, and enhancing ITSM workflows—achieving a 15% improvement in global support and increased service reliability.</Justify></p> 
-                   
-                   
-                    <p><Justify>Adept at strengthening stakeholder relationships and optimizing service delivery, raising system availability and user satisfaction by over 10%.</Justify></p>
+            <div class="grid grid-2">
+                <div>
+                    <p>IT Manager with 9+ years of global experience across Azure, Citrix DaaS, and on-premises environments. Aligned technology roadmaps with business goals, boosting efficiency by 10%.</p>
+                    <p>Expert in driving digital transformation and enhancing ITSM workflows, achieving a 15% uplift in support reliability.</p>
+                    <p>Skilled at stakeholder engagement, optimizing service delivery, and elevating user satisfaction by over 10%.</p>
                 </div>
-                <div class="skills">
-                    <div class="skill-category">
-                        <h3>Core Competencies</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">Strategic Technology Planning</span>
-                            <span class="skill-tag">IT Governance</span>
-                            <span class="skill-tag">Regional Team Management</span>
-                            <span class="skill-tag">Resource Management</span>
-                            <span class="skill-tag">Budget Management</span>
-                            <span class="skill-tag">Strategic Planning</span>
-                            <span class="skill-tag">Project Management</span>
-                            <span class="skill-tag">Change Management</span>
-                            <span class="skill-tag">Vendor Management</span>
-                            <span class="skill-tag">Capacity Planning</span>
-                            <span class="skill-tag">IT Service Improvement</span>
-                            <span class="skill-tag">Incident Management</span>
-                            <span class="skill-tag">Problem Management</span>
-                            <span class="skill-tag">Identity Access Management</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Technical Skills</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">Azure Cloud</span>
-                            <span class="skill-tag">Citrix DaaS</span>
-                            <span class="skill-tag">Microsoft 365</span>
-                            <span class="skill-tag">Active Directory</span>
-                            <span class="skill-tag">Entra ID</span>
-                            <span class="skill-tag">PowerShell</span>
-                            <span class="skill-tag">Microsoft Intune</span>
-                            <span class="skill-tag">SD-WAN</span>
-                            <span class="skill-tag">ITSM</span>
-                            <span class="skill-tag">VMware</span>
-                            <span class="skill-tag">Windows Server</span>
-                            <span class="skill-tag">Linux</span>
-                        </div>
-                    </div>
+                <div class="skills-list">
+                    <span class="skill-tag">Strategic Planning</span>
+                    <span class="skill-tag">IT Governance</span>
+                    <span class="skill-tag">Azure Cloud</span>
+                    <span class="skill-tag">Citrix DaaS</span>
+                    <span class="skill-tag">PowerShell</span>
+                    <span class="skill-tag">Vendor Management</span>
+                    <span class="skill-tag">Change Management</span>
+                    <span class="skill-tag">Capacity Planning</span>
+                    <span class="skill-tag">Incident Management</span>
+                    <span class="skill-tag">Linux & Windows Server</span>
                 </div>
             </div>
         </section>
 
-        <section id="experience">
+        <!-- Experience -->
+        <section id="experience" data-aos="fade-left">
             <h2 class="section-title">Professional Experience</h2>
-            <div class="experience-item">
-            <div class="job-header" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
-            <div class="job-title">IT Manager</div>
-            <div>|</div>
-            <div class="job-company">Neovia Logistics Pvt, LTD</div>
-            <div>|</div>
-             <div class="job-duration">2021 – 31 March 2025</div>
-            </div>
-            </div>
-                <p class="job-description">Managed IT field services operations and IT Infrastructure systems globally, enhanced system performance and minimize service disruptions</p>
-                <ul class="job-achievements">
-                    <li>Managed global IT field services and infrastructure systems, improving system uptime and minimizing disruptions by implementing proactive monitoring, standardizing incident response processes, and driving root cause analysis in APAC regions.</li>
-                    <li>Supervised Active Directory, Azure AD (Entra ID), Microsoft Intune, and Microsoft 365 platforms; increased system reliability by 10% with Intune and Citrix improvements that modernized infrastructure, automated device compliance checks, and improved remote access.</li>
-                    <li>Developed automation scripts in PowerShell for user lifecycle management; migrated MFA from DUO to Azure MFA, improved email and authentication security protocols.</li>
-                    <li>Led migration from Fortinet to CATO SD-WAN, reducing network-related issues by 47%.</li>
-                    <li>Enhanced ITSM by migrating to Service desk plus from Service now, increasing first-call resolution by 50%.</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">IT Support Analyst 2017 – 2021</h3>
-                        <div class="job-company">OLF (India) Software India Private Limited</div>
-                    </div>
-                    
+            <div class="grid grid-2">
+                <div class="cards" data-aos="zoom-in">
+                    <h3>IT Manager <span class="text-muted">@ Neovia Logistics Pvt Ltd</span></h3>
+                    <p class="text-muted"><strong>2021 – March 2025</strong></p>
+                    <ul>
+                        <li>Led global IT field services, improving uptime through proactive monitoring and standardized incident response.</li>
+                        <li>Modernized infrastructure with Azure AD, Citrix DaaS, and Intune, boosting reliability by 10%.</li>
+                        <li>Automated user management with PowerShell; migrated MFA to Azure MFA, enhancing security protocols.</li>
+                        <li>Migrated to CATO SD-WAN, reducing network issues by 47%.</li>
+                        <li>Upgraded ITSM to ServiceDesk Plus, increasing first-call resolution by 50%.</li>
+                    </ul>
                 </div>
-                <p class="job-description">Provided Level 2 support and IT infrastructure management, improving system reliability and security.</p>
-                <ul class="job-achievements">
-                    <li>Delivered Level 2 support and managed IT infrastructure including Office 365, Entra ID, Citrix Farm, VMware, and Active Directory.</li>
-                    <li>Improved endpoint protection with Microsoft Defender and Symantec, strengthening system security.</li>
-                    <li>Managed asset inventory via Lansweeper; provided L2 support for Azure IAM, VMware, Netskope, CrowdStrike, and Cisco AnyConnect.</li>
-                    <li>Streamlined issue resolution using Jira and ServiceNow, improved knowledge base documentation.</li>
-                    <li>Supported Windows 10,11 and Linux OS upgrade and migrations and supported IT service desk operations globally.</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Desktop Support Engineer <div class="job-duration">2016 – 2017</div></h3>
-                        <div class="job-company">IMSI India Private Limited</div>
-                    </div>
-                    <div class="job-duration">2016 – 2017</div>
+                <div class="cards" data-aos="zoom-in" data-aos-delay="100">
+                    <h3>IT Support Analyst <span class="text-muted">@ OLF (India) Software Pvt Ltd</span></h3>
+                    <p class="text-muted"><strong>2017 – 2021</strong></p>
+                    <ul>
+                        <li>Provided L2 support for Office 365, Entra ID, Citrix Farms, VMware, and AD, improving system reliability.</li>
+                        <li>Enhanced endpoint protection with Microsoft Defender and Symantec.</li>
+                        <li>Managed asset inventory via Lansweeper; supported Azure IAM, Netskope, CrowdStrike, Cisco AnyConnect.</li>
+                        <li>Streamlined support workflows using Jira and ServiceNow, improving documentation.</li>
+                    </ul>
                 </div>
-                <ul class="job-achievements">
-                    <li>Served as IT field services support for 5 projects, supporting over 1,000 users per shift.</li>
-                    <li>Troubleshoot and resolve incidents via BMC Remedy, reducing downtime.</li>
-                    <li>Provided support for Windows, Outlook, Exchange, Office 365, and Desktops and laptops.</li>
-                    <li>Improved SLA adherence through proactive issue tracking and 24/7 ServiceDesk support.</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Junior Quality Engineer</h3>
-                        <div class="job-company">NASH India Private Limited</div>
-                    </div>
-                    <div class="job-duration">2015 – 2016</div>
+                <div class="cards" data-aos="zoom-in" data-aos-delay="200">
+                    <h3>Desktop Support Engineer <span class="text-muted">@ IMSI India Pvt Ltd</span></h3>
+                    <p class="text-muted"><strong>2016 – 2017</strong></p>
+                    <ul>
+                        <li>Supported 1,000+ users across 5 projects in IT field services.</li>
+                        <li>Resolved incidents via BMC Remedy, reducing downtime.</li>
+                        <li>Provided support for Windows, Outlook, Exchange, and Office 365 environments.</li>
+                    </ul>
                 </div>
-                <ul class="job-achievements">
-                    <li>Level 1 IT Support for Project Bloom energy and APC as well as Quality check.</li>
-                    <li>Performed ISO-compliant inspections and managed quality documentation systems along.</li>
-                    <li>Implemented Poka-Yoke and SOPs to reduce errors by 10%; tracked instrument calibration.</li>
-                    <li>Created real-time dashboards for First Pass Yield using Excel and SAP.</li>
-                    <li>Conducted final assembly audits and maintained BOM and inventory systems.</li>
-                </ul>
+                <div class="cards" data-aos="zoom-in" data-aos-delay="300">
+                    <h3>Junior Quality Engineer <span class="text-muted">@ NASH India Pvt Ltd</span></h3>
+                    <p class="text-muted"><strong>2015 – 2016</strong></p>
+                    <ul>
+                        <li>Performed ISO-compliant inspections and managed quality documentation systems.</li>
+                        <li>Implemented Poka-Yoke and SOPs, reducing errors by 10%.</li>
+                        <li>Created dashboards for First Pass Yield using Excel and SAP.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section id="education">
+        <!-- Education -->
+        <section id="education" data-aos="fade-up">
             <h2 class="section-title">Education</h2>
-            
-            <div class="education-item">
-                <h3 class="education-title">Bachelor of Technology, Mechanical Engineering</h3>
-                <div class="education-institution">RGMCET, Nandyal</div>
-                <div class="education-year">2015</div>
-            </div>
-            
-            <div class="education-item">
-                <h3 class="education-title">Diploma, Mechanical Engineering</h3>
-                <div class="education-institution">GMRP, Madanapalle</div>
-                <div class="education-year">2010</div>
-            </div>
-        </section>
-
-        <section id="training">
-            <h2 class="section-title">Professional Development and Training</h2>
-            
-            <div class="training-item">
-                <h3 class="training-title">IT Management & Leadership Professional Training</h3>
-                <div class="education-year">2023</div>
-                <p>Focused on strategic planning, leading cross-functional teams, IT governance, and change leadership. Certification not pursued; actively applied in project leadership and team development.</p>
-            </div>
-            
-            <div class="training-item">
-                <h3 class="training-title">ITIL V4 Foundation Training</h3>
-                <div class="education-year">2022</div>
-                <p>Applied in real-time to incident and change management improvements. Developed practical knowledge of service value system, four dimensions model, and ITIL practices, currently preparing for certification examination.</p>
-            </div>
-            
-            <div class="training-item">
-                <h3 class="training-title">Azure Administrator Associate and M365 Admin Training</h3>
-                <div class="education-year">2024</div>
-                <p>Gained skills in cloud provisioning, security, collaboration tools; applied to system migrations and governance.</p>
-            </div>
-            <div class="training-item">
-                <h3 class="training-title">Designing Microsoft Azure Infrastructure Solutions Training</h3>
-                <div class="education-year">2024</div>
-                <p>Gained skills in cloud provisioning, security, collaboration tools; applied to system migrations and governance.</p>
+            <div class="grid grid-2">
+                <div class="cards" data-aos="zoom-in">
+                    <h3>Bachelor of Technology, Mechanical Engineering</h3>
+                    <p class="text-muted">RGMCET, Nandyal</p>
+                    <p class="text-muted"><strong>2015</strong></p>
+                </div>
+                <div class="cards" data-aos="zoom-in" data-aos-delay="100">
+                    <h3>Diploma, Mechanical Engineering</h3>
+                    <p class="text-muted">GMRP, Madanapalle</p>
+                    <p class="text-muted"><strong>2010</strong></p>
+                </div>
             </div>
         </section>
 
-        <section id="contact">
+        <!-- Training -->
+        <section id="training" data-aos="fade-right">
+            <h2 class="section-title">Professional Development</h2>
+            <div class="grid grid-2">
+                <div class="cards" data-aos="zoom-in">
+                    <h3>IT Management & Leadership Professional Training</h3>
+                    <p class="text-muted"><strong>2023</strong></p>
+                    <p>Focused on strategic planning, cross-functional leadership, IT governance, and change management.</p>
+                </div>
+                <div class="cards" data-aos="zoom-in" data-aos-delay="100">
+                    <h3>ITIL V4 Foundation Training</h3>
+                    <p class="text-muted"><strong>2022</strong></p>
+                    <p>Applied ITIL practices to enhance incident and change management processes.</p>
+                </div>
+                <div class="cards" data-aos="zoom-in" data-aos-delay="200">
+                    <h3>Azure Administrator Associate & M365 Admin Training</h3>
+                    <p class="text-muted"><strong>2024</strong></p>
+                    <p>Gained hands-on skills in cloud provisioning, security, and collaboration tools.</p>
+                </div>
+                <div class="cards" data-aos="zoom-in" data-aos-delay="300">
+                    <h3>Designing Microsoft Azure Infrastructure Solutions</h3>
+                    <p class="text-muted"><strong>2024</strong></p>
+                    <p>Learned advanced Azure infrastructure design and governance best practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" data-aos="fade-up">
             <h2 class="section-title">Contact Me</h2>
-            <div class="contact-content">
-                <p>Feel free to reach out to me through any of the following channels:</p>
-                <div class="contact-info" style="margin-top: 1rem; justify-content: flex-start;">
-                    <a href="tel:+918147021377" style="color: var(--primary-color);"><i class="fas fa-phone"></i> +91 8147021377</a>
-                    <a href="mailto:manoharbabu1606@gmail.com" style="color: var(--primary-color);"><i class="fas fa-envelope"></i> manoharbabu1606@gmail.com</a>
-                    <a href="https://www.linkedin.com/in/manoharbabul/" target="_blank" style="color: var(--primary-color);"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/Manoharbabu1" target="_blank" style="color: var(--primary-color);"><i class="fab fa-github"></i> GitHub</a>
+            <div class="contact-cards">
+                <div class="contact-card" data-aos="zoom-in">
+                    <i class="fas fa-phone"></i>
+                    <p><a href="tel:+918147021377">+91 8147021377</a></p>
+                </div>
+                <div class="contact-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:manoharbabu1606@gmail.com">manoharbabu1606@gmail.com</a></p>
+                </div>
+                <div class="contact-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-linkedin"></i>
+                    <p><a href="https://www.linkedin.com/in/manoharbabul/" target="_blank">LinkedIn</a></p>
+                </div>
+                <div class="contact-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-github"></i>
+                    <p><a href="https://github.com/Manoharbabu1" target="_blank">GitHub</a></p>
                 </div>
             </div>
         </section>
     </div>
 
-    <footer>
+    <!-- Footer -->
+    <footer data-aos="fade-up">
         <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Manohar Babu N. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#education">Education</a>
-                    <a href="#contact">Contact</a>
-                </div>
+            <p>&copy; 2025 Manohar Babu N. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </footer>
 
-    <a href="#home" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Mobile Navigation
-        const hamburger = document.querySelector(".hamburger");
-        const navLinks = document.querySelector(".nav-links");
-
-        hamburger.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-            hamburger.classList.toggle("active");
-        });
-
-        // Close mobile menu when clicking on a nav link
-        document.querySelectorAll(".nav-links a").forEach(link => {
-            link.addEventListener("click", () => {
-                navLinks.classList.remove("active");
-                hamburger.classList.remove("active");
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const headerOffset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Show/hide back to top button based on scroll position
-        window.addEventListener('scroll', () => {
-            const backToTopButton = document.querySelector('.back-to-top');
-            if (window.pageYOffset > 300) {
-                backToTopButton.style.display = 'flex';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
+        AOS.init({ duration: 800, offset: 200 });
+        // Mobile nav toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
         });
     </script>
 </body>
